@@ -114,6 +114,8 @@ static int TrackToggleHandler( XPLMCommandRef inCommand,
                                XPLMCommandPhase inPhase,
                                void * inRefCon )
 {
+    if ( inPhase != xplm_CommandBegin )
+        return 0;
     if ( track_disabled )
     {
         //Enable
@@ -136,6 +138,9 @@ static int TranslationToggleHandler( XPLMCommandRef inCommand,
                                      XPLMCommandPhase inPhase,
                                      void * inRefCon )
 {
+    if ( inPhase != xplm_CommandBegin )
+        return 0;
+    
     translation_disabled = !translation_disabled;
     if (!translation_disabled)
     {
